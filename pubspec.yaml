@@ -19,6 +19,7 @@ dependencies:
   reusable_list_view: ^0.0.1
   reusable_icon: ^0.0.2
   reusable_tab_bar: ^0.0.1
+  flutter_bloc: ^9.1.0
 
 
 dev_dependencies:
