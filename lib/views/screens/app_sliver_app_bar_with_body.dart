@@ -1,6 +1,5 @@
+import 'package:app_sliver/views/widgets/sliver_components/sliver_app_bar/app_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
-
-import 'sliver_app_bar/app_sliver_app_bar.dart';
 
 class AppSliverAppBarWithBody extends StatelessWidget {
   const AppSliverAppBarWithBody({
@@ -14,7 +13,7 @@ class AppSliverAppBarWithBody extends StatelessWidget {
     this.bottomTitle,
     this.textScaler,
     this.topTitle,
-    this.titleTxtStyle,
+    this.bottomTitleStyle,
     this.topTitleTxtStyle,
     this.topTitleCenter = true,
     this.bottomTitleCenter,
@@ -44,7 +43,7 @@ class AppSliverAppBarWithBody extends StatelessWidget {
 
   //  title related
   final String? bottomTitle;
-  final TextStyle? titleTxtStyle;
+  final TextStyle? bottomTitleStyle;
   final TextScaler? textScaler;
   final String? topTitle;
   final TextStyle? topTitleTxtStyle;
@@ -84,8 +83,8 @@ class AppSliverAppBarWithBody extends StatelessWidget {
             textScaler: textScaler,
             centerBottomTitle: bottomTitleCenter,
             topTitle: topTitle,
-            topTitleTxtStyle: topTitleTxtStyle,
-            titleTxtStyle: titleTxtStyle,
+            topTitleStyle: topTitleTxtStyle,
+            bottomTitleStyle: bottomTitleStyle,
             centerTopTitle: topTitleCenter,
             actionsList: actions,
             background: background,

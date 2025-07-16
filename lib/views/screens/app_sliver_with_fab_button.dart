@@ -1,22 +1,18 @@
-import 'dart:io';
-
+import 'package:app_sliver/views/widgets/sliver_components/sliver_app_bar/app_sliver_app_bar.dart';
+import 'package:app_sliver/views/widgets/positional_transformer_builder.dart';
 import 'package:flutter/material.dart';
-import 'sliver_app_bar/app_sliver_app_bar.dart';
-import 'widgets/positional_transformer_builder.dart';
 
-class AppSliverWithOverlappedChild extends StatefulWidget {
-  const AppSliverWithOverlappedChild({
+class AppSliverWithFabButton extends StatefulWidget {
+  const AppSliverWithFabButton({
     super.key,
     this.body,
     this.pinned = true,
     this.floating = false,
     this.snap = false,
     this.stretch = false,
-    this.overlappedChild,
+    this.floatingActionButton,
     this.fabTop,
     this.fabRight,
-    this.fabLeft,
-    this.fabRadius,
     this.expandedHeight,
     this.bottomTitle,
     this.textScaler,
@@ -39,24 +35,26 @@ class AppSliverWithOverlappedChild extends StatefulWidget {
     this.fabIcon,
     this.fabImageSource,
     this.onPressedFab,
-    this.fabImageFile, this.bgColor, this.titleWidget, this.leading, this.actionsList, this.willShowBackArrow,
+    this.bgColor,
+    this.titleWidget,
+    this.leading,
+    this.actionsList,
+    this.willShowBackArrow,
+    this.centerTitle,
+    this.fabIsCircleImage,
+    this.fabImageRadius,
   });
 
-  // Fab builder
   final String? heroTag;
   final IconData? fabIcon;
   final VoidCallback? onPressedFab;
-
   final String? fabImageSource;
-  final File? fabImageFile;
-
-  final Widget? overlappedChild;
+  final Widget? floatingActionButton;
   final double? fabTop;
   final double? fabRight;
-  final double? fabLeft;
-  final double? fabRadius;
+  final bool? fabIsCircleImage;
+  final double? fabImageRadius;
 
-  // sliver appbar property
   final bool pinned;
   final bool snap;
   final bool floating;
@@ -64,7 +62,6 @@ class AppSliverWithOverlappedChild extends StatefulWidget {
   final double? expandedHeight;
   final double? collapsedHeight;
 
-  //  title related
   final String? bottomTitle;
   final TextStyle? titleTxtStyle;
   final TextScaler? textScaler;
@@ -73,15 +70,15 @@ class AppSliverWithOverlappedChild extends StatefulWidget {
   final bool? topTitleCenter;
   final bool? bottomTitleCenter;
 
+  final List<Widget>? actions;
+
   final Color? bgColor;
   final Widget? titleWidget;
   final Widget? leading;
   final List<Widget>? actionsList;
   final bool? willShowBackArrow;
+  final bool? centerTitle;
 
-  final List<Widget>? actions;
-
-  // back ground related
   final Widget? background;
   final String? imageSource;
   final BoxFit? imgFit;
@@ -89,31 +86,23 @@ class AppSliverWithOverlappedChild extends StatefulWidget {
   final Widget? bottomChild;
   final PreferredSizeWidget? bottom;
 
-  // Styles
   final double? appBarRadius;
   final ShapeBorder? shape;
   final Color? backgroundColor;
 
-  // Tab bar
   final Widget? body;
 
   @override
-  State<AppSliverWithOverlappedChild> createState() =>
-      _AppSliverWithOverlappedChildState();
+  State<AppSliverWithFabButton> createState() => _AppSliverWithFabButtonState();
 }
 
-class _AppSliverWithOverlappedChildState
-    extends State<AppSliverWithOverlappedChild> {
+class _AppSliverWithFabButtonState extends State<AppSliverWithFabButton> {
   late ScrollController _scrollController;
-  var top = 0.0;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      setState(() {});
-    });
+    _scrollController = ScrollController()..addListener(() => setState(() {}));
   }
 
   @override
@@ -137,8 +126,8 @@ class _AppSliverWithOverlappedChildState
                 textScaler: widget.textScaler,
                 centerBottomTitle: widget.bottomTitleCenter,
                 topTitle: widget.topTitle,
-                topTitleTxtStyle: widget.topTitleTxtStyle,
-                titleTxtStyle: widget.titleTxtStyle,
+                topTitleStyle: widget.topTitleTxtStyle,
+                bottomTitleStyle: widget.titleTxtStyle,
                 centerTopTitle: widget.topTitleCenter,
                 actionsList: widget.actions,
                 background: widget.background,
@@ -149,22 +138,19 @@ class _AppSliverWithOverlappedChildState
                 appBarRadius: widget.appBarRadius,
                 shape: widget.shape,
               ),
-            if (widget.body != null)
-              // if (widget.body != null) widget.body!
-              SliverFillRemaining(child: widget.body),
+            if (widget.body != null) widget.body!,
           ],
         ),
         PositionalTransformerBuilder(
           scrollController: _scrollController,
-          floatingActionButton: widget.overlappedChild,
+          floatingActionButton: widget.floatingActionButton,
           icon: widget.fabIcon,
-          imgFile: widget.fabImageFile,
           imageSource: widget.fabImageSource,
+          isCircleImage: widget.fabIsCircleImage,
+          imageRadius: widget.fabImageRadius,
           onPressed: widget.onPressedFab,
           topStart: widget.fabTop,
           right: widget.fabRight,
-          left: widget.fabLeft,
-          radius: widget.fabRadius,
         ),
       ],
     );

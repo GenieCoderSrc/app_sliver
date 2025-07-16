@@ -1,21 +1,22 @@
-import 'dart:io';
-
+import 'package:app_sliver/views/widgets/sliver_components/sliver_app_bar/app_sliver_app_bar.dart';
+import 'package:app_sliver/views/widgets/positional_transformer_builder.dart';
 import 'package:flutter/material.dart';
 
-import 'sliver_app_bar/app_sliver_app_bar.dart';
-import 'widgets/positional_transformer_builder.dart';
 
-class AppSliverWithFabButton extends StatefulWidget {
-  const AppSliverWithFabButton({
+class AppSliverWithOverlappedChild extends StatefulWidget {
+  const AppSliverWithOverlappedChild({
     super.key,
     this.body,
     this.pinned = true,
     this.floating = false,
     this.snap = false,
     this.stretch = false,
-    this.floatingActionButton,
+    this.overlappedChild,
     this.fabTop,
     this.fabRight,
+    this.fabLeft,
+    this.fabRadius,
+    this.fabIsCircleImage,
     this.expandedHeight,
     this.bottomTitle,
     this.textScaler,
@@ -38,22 +39,25 @@ class AppSliverWithFabButton extends StatefulWidget {
     this.fabIcon,
     this.fabImageSource,
     this.onPressedFab,
-    this.fabImageFile, this.bgColor, this.titleWidget, this.leading, this.actionsList, this.willShowBackArrow, this.centerTitle,
+    this.bgColor,
+    this.titleWidget,
+    this.leading,
+    this.actionsList,
+    this.willShowBackArrow,
   });
 
-  // Fab builder
   final String? heroTag;
   final IconData? fabIcon;
   final VoidCallback? onPressedFab;
-
   final String? fabImageSource;
-  final File? fabImageFile;
+  final bool? fabIsCircleImage;
 
-  final Widget? floatingActionButton;
+  final Widget? overlappedChild;
   final double? fabTop;
   final double? fabRight;
+  final double? fabLeft;
+  final double? fabRadius;
 
-  // sliver appbar property
   final bool pinned;
   final bool snap;
   final bool floating;
@@ -61,7 +65,6 @@ class AppSliverWithFabButton extends StatefulWidget {
   final double? expandedHeight;
   final double? collapsedHeight;
 
-  //  title related
   final String? bottomTitle;
   final TextStyle? titleTxtStyle;
   final TextScaler? textScaler;
@@ -70,19 +73,14 @@ class AppSliverWithFabButton extends StatefulWidget {
   final bool? topTitleCenter;
   final bool? bottomTitleCenter;
 
-  final List<Widget>? actions;
-
-
-
   final Color? bgColor;
   final Widget? titleWidget;
   final Widget? leading;
   final List<Widget>? actionsList;
   final bool? willShowBackArrow;
-  final bool? centerTitle;
 
+  final List<Widget>? actions;
 
-  // back ground related
   final Widget? background;
   final String? imageSource;
   final BoxFit? imgFit;
@@ -90,29 +88,28 @@ class AppSliverWithFabButton extends StatefulWidget {
   final Widget? bottomChild;
   final PreferredSizeWidget? bottom;
 
-  // Styles
   final double? appBarRadius;
   final ShapeBorder? shape;
   final Color? backgroundColor;
 
-  // Tab bar
   final Widget? body;
 
   @override
-  State<AppSliverWithFabButton> createState() => _AppSliverWithFabButtonState();
+  State<AppSliverWithOverlappedChild> createState() =>
+      _AppSliverWithOverlappedChildState();
 }
 
-class _AppSliverWithFabButtonState extends State<AppSliverWithFabButton> {
+class _AppSliverWithOverlappedChildState
+    extends State<AppSliverWithOverlappedChild> {
   late ScrollController _scrollController;
-  var top = 0.0;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      setState(() {});
-    });
+    _scrollController =
+        ScrollController()..addListener(() {
+          setState(() {});
+        });
   }
 
   @override
@@ -136,8 +133,8 @@ class _AppSliverWithFabButtonState extends State<AppSliverWithFabButton> {
                 textScaler: widget.textScaler,
                 centerBottomTitle: widget.bottomTitleCenter,
                 topTitle: widget.topTitle,
-                topTitleTxtStyle: widget.topTitleTxtStyle,
-                titleTxtStyle: widget.titleTxtStyle,
+                topTitleStyle: widget.topTitleTxtStyle,
+                bottomTitleStyle: widget.titleTxtStyle,
                 centerTopTitle: widget.topTitleCenter,
                 actionsList: widget.actions,
                 background: widget.background,
@@ -145,38 +142,23 @@ class _AppSliverWithFabButtonState extends State<AppSliverWithFabButton> {
                 imageSource: widget.imageSource,
                 imgFit: widget.imgFit,
                 bottomChild: widget.bottomChild,
-                // bottom: widget.bottom ??
-                //     AppBar(
-                //       toolbarHeight: kToolbarHeight + 10,
-                //       backgroundColor: Colors.transparent,
-                //       title: widget.bottomChild ??
-                //           Row(
-                //             mainAxisAlignment: MainAxisAlignment.end,
-                //             children: [
-                //               FloatingActionButton(
-                //                 heroTag: widget.heroTag ?? "sliver Fab Action",
-                //                 onPressed: () {},
-                //                 child: AppIcon(widget.fabIcon ?? Icons.add),
-                //               ),
-                //             ],
-                //           ),
-                //     ),
                 appBarRadius: widget.appBarRadius,
                 shape: widget.shape,
               ),
-            if (widget.body != null) widget.body!
-            // SliverFillRemaining(child: widget.body),
+            if (widget.body != null) SliverFillRemaining(child: widget.body!),
           ],
         ),
         PositionalTransformerBuilder(
           scrollController: _scrollController,
-          floatingActionButton: widget.floatingActionButton,
+          floatingActionButton: widget.overlappedChild,
           icon: widget.fabIcon,
-          imgFile: widget.fabImageFile,
           imageSource: widget.fabImageSource,
+          isCircleImage: widget.fabIsCircleImage,
+          imageRadius: widget.fabRadius,
           onPressed: widget.onPressedFab,
           topStart: widget.fabTop,
           right: widget.fabRight,
+          left: widget.fabLeft,
         ),
       ],
     );

@@ -1,6 +1,6 @@
+import 'package:app_sliver/views/widgets/sliver_components/sliver_list/app_sliver_list.dart';
 import 'package:flutter/material.dart';
 import 'package:reusable_list_view/reusable_list_view.dart';
-import 'sliver_list/app_sliver_list.dart';
 
 class AppSliverAppBarSliverList<T> extends StatelessWidget {
   const AppSliverAppBarSliverList({

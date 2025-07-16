@@ -1,8 +1,6 @@
-import 'dart:io';
-
+import 'package:app_sliver/views/widgets/sliver_components/sliver_app_bar/app_sliver_app_bar.dart';
+import 'package:app_sliver/views/widgets/positional_transformer_builder.dart';
 import 'package:flutter/material.dart';
-import 'sliver_app_bar/app_sliver_app_bar.dart';
-import 'widgets/positional_transformer_builder.dart';
 
 class AppSliverWithProfile extends StatefulWidget {
   const AppSliverWithProfile({
@@ -37,22 +35,22 @@ class AppSliverWithProfile extends StatefulWidget {
     this.fabIcon,
     this.fabImageSource,
     this.onPressedFab,
-    this.fabImageFile,
+    this.fabIsCircleImage = true,
+    this.fabRadius,
   });
 
-  // Fab builder
+  // FAB properties
   final String? heroTag;
   final IconData? fabIcon;
   final VoidCallback? onPressedFab;
-
   final String? fabImageSource;
-  final File? fabImageFile;
-
   final Widget? floatingActionButton;
   final double? fabTop;
   final double? fabRight;
+  final bool? fabIsCircleImage;
+  final double? fabRadius;
 
-  // sliver appbar property
+  // SliverAppBar properties
   final bool pinned;
   final bool snap;
   final bool floating;
@@ -60,7 +58,7 @@ class AppSliverWithProfile extends StatefulWidget {
   final double? expandedHeight;
   final double? collapsedHeight;
 
-  //  title related
+  // Title related
   final String? bottomTitle;
   final TextStyle? titleTxtStyle;
   final TextScaler? textScaler;
@@ -71,7 +69,7 @@ class AppSliverWithProfile extends StatefulWidget {
 
   final List<Widget>? actions;
 
-  // back ground related
+  // Background related
   final Widget? background;
   final String? imageSource;
   final BoxFit? imgFit;
@@ -84,7 +82,7 @@ class AppSliverWithProfile extends StatefulWidget {
   final ShapeBorder? shape;
   final Color? backgroundColor;
 
-  // Tab bar
+  // Body
   final Widget? body;
 
   @override
@@ -92,16 +90,12 @@ class AppSliverWithProfile extends StatefulWidget {
 }
 
 class _AppSliverWithProfileState extends State<AppSliverWithProfile> {
-  late ScrollController _scrollController;
-  var top = 0.0;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      setState(() {});
-    });
+    _scrollController = ScrollController()..addListener(() => setState(() {}));
   }
 
   @override
@@ -125,8 +119,8 @@ class _AppSliverWithProfileState extends State<AppSliverWithProfile> {
                 textScaler: widget.textScaler,
                 centerBottomTitle: widget.bottomTitleCenter,
                 topTitle: widget.topTitle,
-                topTitleTxtStyle: widget.topTitleTxtStyle,
-                titleTxtStyle: widget.titleTxtStyle,
+                topTitleStyle: widget.topTitleTxtStyle,
+                bottomTitleStyle: widget.titleTxtStyle,
                 centerTopTitle: widget.topTitleCenter,
                 actionsList: widget.actions,
                 background: widget.background,
@@ -137,20 +131,20 @@ class _AppSliverWithProfileState extends State<AppSliverWithProfile> {
                 appBarRadius: widget.appBarRadius,
                 shape: widget.shape,
               ),
-            if (widget.body != null)
-              // if (widget.body != null) widget.body!
-              SliverFillRemaining(child: widget.body),
+            if (widget.body != null) SliverFillRemaining(child: widget.body),
           ],
         ),
         PositionalTransformerBuilder(
           scrollController: _scrollController,
           floatingActionButton: widget.floatingActionButton,
           icon: widget.fabIcon,
-          imgFile: widget.fabImageFile,
+          heroTag: widget.heroTag,
           imageSource: widget.fabImageSource,
           onPressed: widget.onPressedFab,
           topStart: widget.fabTop,
           right: widget.fabRight,
+          isCircleImage: widget.fabIsCircleImage,
+          imageRadius: widget.fabRadius,
         ),
       ],
     );
