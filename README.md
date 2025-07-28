@@ -16,7 +16,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  app_sliver: ^0.0.1
+  app_sliver: ^0.0.2
 ```
 
 Then run:
