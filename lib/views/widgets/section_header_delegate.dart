@@ -9,10 +9,7 @@ class SectionHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      color: bgColor,
-      child: child,
-    );
+    return Container(color: bgColor, child: child);
   }
 
   @override

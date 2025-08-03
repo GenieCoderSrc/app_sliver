@@ -4,14 +4,14 @@ class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   final Widget child;
   final double height;
 
-  MySliverPersistentHeaderDelegate({
-    required this.child,
-    this.height = 0.0,
-  });
+  MySliverPersistentHeaderDelegate({required this.child, this.height = 0.0});
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return child;
   }
 

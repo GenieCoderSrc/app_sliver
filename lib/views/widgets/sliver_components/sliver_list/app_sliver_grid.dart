@@ -34,13 +34,10 @@ class AppSliverGrid<T> extends StatelessWidget {
     final double childAspectRatio = (itemWidth / itemHeight);
 
     return SliverGrid(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          final T itemData = listData![index];
-          return child(itemData);
-        },
-        childCount: listData?.length ?? 0,
-      ),
+      delegate: SliverChildBuilderDelegate((context, index) {
+        final T itemData = listData![index];
+        return child(itemData);
+      }, childCount: listData?.length ?? 0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         mainAxisSpacing: mainAxisSpacing,

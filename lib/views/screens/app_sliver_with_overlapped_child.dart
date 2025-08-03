@@ -2,7 +2,6 @@ import 'package:app_sliver/views/widgets/sliver_components/sliver_app_bar/app_sl
 import 'package:app_sliver/views/widgets/positional_transformer_builder.dart';
 import 'package:flutter/material.dart';
 
-
 class AppSliverWithOverlappedChild extends StatefulWidget {
   const AppSliverWithOverlappedChild({
     super.key,
