@@ -112,94 +112,91 @@ class AppSliverTabBar extends StatelessWidget {
             }
           });
           return NestedScrollView(
-            headerSliverBuilder: (
-              BuildContext context,
-              bool innerBoxIsScrolled,
-            ) {
-              return <Widget>[
-                if (bottomTitle != null ||
-                    imageSource != null ||
-                    background != null)
-                  AppSliverAppBar(
-                    pinned: pinned,
-                    snap: snap,
-                    floating: floating,
-                    stretch: stretch,
-                    expandedHeight: expandedHeight ?? kToolbarHeight + 150,
-                    collapsedHeight: collapsedHeight,
-                    bottomTitle: bottomTitle,
-                    textScaler: textScaler,
-                    centerBottomTitle: bottomTitleCenter,
-                    topTitle: topTitle,
-                    topTitleStyle: topTitleTxtStyle,
-                    bottomTitleStyle: bottomTitleStyle,
-                    centerTopTitle: topTitleCenter,
-                    actionsList: actions,
-                    background: background,
-                    backgroundColor: backgroundColor,
-                    imageSource: imageSource,
-                    imgFit: imgFit,
-                    bottomChild: bottomChild,
-                    bottom:
-                        isBgTab
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    if (bottomTitle != null ||
+                        imageSource != null ||
+                        background != null)
+                      AppSliverAppBar(
+                        pinned: pinned,
+                        snap: snap,
+                        floating: floating,
+                        stretch: stretch,
+                        expandedHeight: expandedHeight ?? kToolbarHeight + 150,
+                        collapsedHeight: collapsedHeight,
+                        bottomTitle: bottomTitle,
+                        textScaler: textScaler,
+                        centerBottomTitle: bottomTitleCenter,
+                        topTitle: topTitle,
+                        topTitleStyle: topTitleTxtStyle,
+                        bottomTitleStyle: bottomTitleStyle,
+                        centerTopTitle: topTitleCenter,
+                        actionsList: actions,
+                        background: background,
+                        backgroundColor: backgroundColor,
+                        imageSource: imageSource,
+                        imgFit: imgFit,
+                        bottomChild: bottomChild,
+                        bottom: isBgTab
                             ? PreferredSize(
-                              preferredSize: const Size.fromHeight(
-                                kToolbarHeight,
-                              ),
-                              child:
-                                  bottom ??
-                                  Container(
-                                    color: tabBgColor ?? Colors.black26,
-                                    child: TabBar(
-                                      tabs: tabHeaders,
-                                      indicatorColor: indicatorColor,
-                                      labelColor:
-                                          selectedLabelColor ?? Colors.white,
-                                      unselectedLabelColor:
-                                          unselectedLabelColor,
-                                      indicatorWeight: indicatorWeight ?? 2.0,
+                                preferredSize: const Size.fromHeight(
+                                  kToolbarHeight,
+                                ),
+                                child:
+                                    bottom ??
+                                    Container(
+                                      color: tabBgColor ?? Colors.black26,
+                                      child: TabBar(
+                                        tabs: tabHeaders,
+                                        indicatorColor: indicatorColor,
+                                        labelColor:
+                                            selectedLabelColor ?? Colors.white,
+                                        unselectedLabelColor:
+                                            unselectedLabelColor,
+                                        indicatorWeight: indicatorWeight ?? 2.0,
+                                      ),
                                     ),
-                                  ),
-                            )
+                              )
                             : null,
-                    appBarRadius: appBarRadius,
-                    shape: shape,
-                  ),
-                if (!isBgTab)
-                  SliverPersistentHeader(
-                    pinned: pinnedTab,
-                    floating: floatingTab,
-                    delegate: SectionHeaderDelegate(
-                      bgColor: tabBgColor ?? Colors.grey.shade100,
-                      child: TabBar(
-                        tabs: tabHeaders,
-                        indicatorColor: indicatorColor,
-                        indicatorWeight: indicatorWeight ?? 2.0,
-                        labelColor: selectedLabelColor ?? Colors.black,
-                        unselectedLabelColor:
-                            unselectedLabelColor ?? Colors.grey,
-                        // labelStyle: AppTxtStyles.kMidTitleTextStyle,
+                        appBarRadius: appBarRadius,
+                        shape: shape,
                       ),
-                    ),
-                  ),
+                    if (!isBgTab)
+                      SliverPersistentHeader(
+                        pinned: pinnedTab,
+                        floating: floatingTab,
+                        delegate: SectionHeaderDelegate(
+                          bgColor: tabBgColor ?? Colors.grey.shade100,
+                          child: TabBar(
+                            tabs: tabHeaders,
+                            indicatorColor: indicatorColor,
+                            indicatorWeight: indicatorWeight ?? 2.0,
+                            labelColor: selectedLabelColor ?? Colors.black,
+                            unselectedLabelColor:
+                                unselectedLabelColor ?? Colors.grey,
+                            // labelStyle: AppTxtStyles.kMidTitleTextStyle,
+                          ),
+                        ),
+                      ),
 
-                // SliverPersistentHeader(
-                //   delegate: MySliverPersistentHeaderDelegate(
-                //     height: 500,
-                //     child: TabBarView(
-                //       controller: tabController,
-                //       children: tabScreens,
-                //     ),
-                //   ),
-                // ),
-                // SliverFillRemaining(
-                //   child: TabBarView(
-                //     controller: tabController,
-                //     children: tabScreens,
-                //   ),
-                // ),
-              ];
-            },
+                    // SliverPersistentHeader(
+                    //   delegate: MySliverPersistentHeaderDelegate(
+                    //     height: 500,
+                    //     child: TabBarView(
+                    //       controller: tabController,
+                    //       children: tabScreens,
+                    //     ),
+                    //   ),
+                    // ),
+                    // SliverFillRemaining(
+                    //   child: TabBarView(
+                    //     controller: tabController,
+                    //     children: tabScreens,
+                    //   ),
+                    // ),
+                  ];
+                },
             body: TabBarView(controller: tabController, children: tabScreens),
           );
         },

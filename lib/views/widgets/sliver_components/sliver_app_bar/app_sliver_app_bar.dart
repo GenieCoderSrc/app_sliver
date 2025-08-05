@@ -70,56 +70,50 @@ class AppSliverAppBar extends StatelessWidget {
       expandedHeight: expandedHeight ?? (kToolbarHeight + 120),
       collapsedHeight: collapsedHeight,
       stretch: stretch ?? false,
-      title:
-          topTitle != null
-              ? Text(
-                topTitle!,
-                textScaler: textScaler,
-                style:
-                    topTitleStyle ??
-                    Theme.of(
-                      context,
-                    ).textTheme.headlineSmall?.copyWith(color: Colors.white),
-              )
-              : null,
+      title: topTitle != null
+          ? Text(
+              topTitle!,
+              textScaler: textScaler,
+              style:
+                  topTitleStyle ??
+                  Theme.of(
+                    context,
+                  ).textTheme.headlineSmall?.copyWith(color: Colors.white),
+            )
+          : null,
       centerTitle: centerTopTitle,
       actions: actionsList,
       flexibleSpace: FlexibleSpaceBar(
-        title:
-            bottomTitle != null
-                ? Text(
-                  bottomTitle!,
-                  textScaler: textScaler,
-                  style:
-                      bottomTitleStyle ??
-                      Theme.of(context).textTheme.titleMedium,
-                )
-                : null,
+        title: bottomTitle != null
+            ? Text(
+                bottomTitle!,
+                textScaler: textScaler,
+                style:
+                    bottomTitleStyle ?? Theme.of(context).textTheme.titleMedium,
+              )
+            : null,
         centerTitle: centerBottomTitle,
-        background:
-            imageSource != null
-                ? AppImageResolver().resolveImage(
-                  imageSource: imageSource,
-                  fit: imgFit ?? BoxFit.cover,
-                )
-                : background,
+        background: imageSource != null
+            ? AppImageResolver().resolveImage(
+                imageSource: imageSource,
+                fit: imgFit ?? BoxFit.cover,
+              )
+            : background,
         stretchModes: stretchModes ?? const [StretchMode.zoomBackground],
       ),
-      bottom:
-          bottomChild != null
-              ? PreferredSize(
-                preferredSize: Size.fromHeight(bottomHeight ?? kToolbarHeight),
-                child: bottomChild!,
-              )
-              : bottom,
-      shape:
-          appBarRadius != null
-              ? RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(appBarRadius!),
-                ),
-              )
-              : shape,
+      bottom: bottomChild != null
+          ? PreferredSize(
+              preferredSize: Size.fromHeight(bottomHeight ?? kToolbarHeight),
+              child: bottomChild!,
+            )
+          : bottom,
+      shape: appBarRadius != null
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(appBarRadius!),
+              ),
+            )
+          : shape,
     );
   }
 }

@@ -39,11 +39,10 @@ class SliverExampleScreen extends StatelessWidget {
         onPressedFab: () => debugPrint("FAB Pressed!"),
         body: AppSliverGrid<String>(
           listData: List.generate(20, (i) => 'Item $i'),
-          child:
-              (item) => Card(
-                margin: const EdgeInsets.all(8.0),
-                child: Center(child: Text(item)),
-              ),
+          child: (item) => Card(
+            margin: const EdgeInsets.all(8.0),
+            child: Center(child: Text(item)),
+          ),
           childHeight: 4.5,
           childWidth: 2,
           crossAxisCount: 2,

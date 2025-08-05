@@ -105,10 +105,10 @@ class _AppSliverWithOverlappedChildState
   @override
   void initState() {
     super.initState();
-    _scrollController =
-        ScrollController()..addListener(() {
-          setState(() {});
-        });
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {});
+      });
   }
 
   @override
