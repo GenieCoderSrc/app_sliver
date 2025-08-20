@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.4
+
+### Aug 22, 2025
+
+### ✨ Updated
+
+- Updated `reusable_image_widget` to 0.1.5
+- Updated `reusable_tab_bar` to 0.0.2
+- Updated `reusable_list_view` to 0.0.5
+- Updated Dart sdk to 3.9.0
+- Removed `flutter_lints` Dependency
+
 ## 0.0.3
 
 ### Aug 16, 2025
