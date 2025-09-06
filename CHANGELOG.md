@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## 0.0.5
+
+### Sep 8, 2025
+
+### ✨ Updated
+
+- Updated `reusable_image_widget` to 0.1.6
+
 ## 0.0.4
 
 ### Aug 22, 2025
