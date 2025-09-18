@@ -107,7 +107,7 @@ class AppSliverTabBar extends StatelessWidget {
             if (!tabController.indexIsChanging) {
               final int index = tabController.index;
               debugPrint('AppSliverTabBar | addListener | index: $index');
-              context.read<TabBarCubit>().setActiveTabIndex(index);
+              context.read<TabBarCubit>().selectTab(index);
               getIndex?.call();
             }
           });
