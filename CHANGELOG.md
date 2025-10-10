@@ -9,6 +9,14 @@ All notable changes to this project will be documented in this file.
 ### ✨ Updated
 
 - Updated `reusable_tab_bar` to 0.0.4
+
+## 0.0.8
+
+### Oct 10, 2025
+
+### ✨ Updated
+
+- Updated `reusable_tab_bar` to 0.0.5
 - Updated ` bloc` to 9.0.1
 
 ## 0.0.7
