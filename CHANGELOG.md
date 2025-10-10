@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 ### ✨ Updated
 
+
 - Updated `reusable_tab_bar` to 0.0.4
 
 ## 0.0.8
