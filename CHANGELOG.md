@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.0
+
+### oct 10, 2025
+
+### ✨ Updated
+
+
+- Updated `reusable_tab_bar` to 0.0.6
+
 ## 0.0.9
 
 ### oct 10, 2025
