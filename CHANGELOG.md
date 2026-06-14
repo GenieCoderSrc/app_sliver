@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1
+
+### Jun 15, 2026
+
+### ✨ Updated
+- Updated `bloc: ^9.2.1`
+
+
+
 All notable changes to this project will be documented in this file.
 
 ## 0.1.0
