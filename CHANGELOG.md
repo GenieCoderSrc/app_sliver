@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.2
+
+### Sep 26, 2026
+
+### ✨ Updated
+
+- Updated `reusable_list_view` 0.0.6
+- Updated `reusable_image_widget` 0.1.8
+
 ## 0.1.1
 
 ### Jun 15, 2026
