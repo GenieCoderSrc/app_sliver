@@ -15,6 +15,8 @@ A customizable Flutter package that simplifies the creation of complex scrollabl
 Add this to your `pubspec.yaml`:
 
 ```yaml
+resolution: workspace
+
 dependencies:
   app_sliver: latest_version
 ```

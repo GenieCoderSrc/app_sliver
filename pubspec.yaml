@@ -8,13 +8,15 @@ issue_tracker: https://github.com/GenieCoderSrc/app_sliver/issues
 
 environment:
   sdk: '>=3.6.0 <4.0.0'
-resolution: workspace # <-- Required for Melos 8 & Pub Workspaces
+
+
+resolution: workspace
 
 dependencies:
   flutter:
     sdk: flutter
 
-  reusable_image_widget: ^0.1.9
+  reusable_image_widget: ^0.1.8
   reusable_tab_bar: ^0.0.7
   reusable_list_view: ^0.0.6
 
