@@ -74,8 +74,7 @@ class AppSliverAppBar extends StatelessWidget {
           ? Text(
               topTitle!,
               textScaler: textScaler,
-              style:
-                  topTitleStyle ??
+              style: topTitleStyle ??
                   Theme.of(
                     context,
                   ).textTheme.headlineSmall?.copyWith(color: Colors.white),
