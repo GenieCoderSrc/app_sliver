@@ -12,7 +12,7 @@ class AppSliverList<T> extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
         final T itemData = listData![index];
-        return child(itemData);
+        return child(itemData, index);
       }, childCount: listData?.length ?? 0),
     );
   }
